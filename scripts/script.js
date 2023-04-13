@@ -1,4 +1,6 @@
-
+$(window).ready(() => {
+  $("#loading").fadeOut(2e3), $("body").css("overflow", "auto");
+});
 var typed = new Typed('.element', {
     strings: ["Freelancer.", "Front End Developer."],
     typeSpeed: 60,
