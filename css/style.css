@@ -704,3 +704,11 @@ nav .content-nav {
 body{
   overflow: hidden;
 }
+
+
+ @media screen and  (max-width: 560px) {
+  .filterDiv {
+    margin-top: 2rem;
+  }
+  
+}
