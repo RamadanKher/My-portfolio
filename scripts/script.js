@@ -1,37 +1,85 @@
-$(window).ready(() => {
-  $("#loading").fadeOut(2e3), $("body").css("overflow", "auto");
-});
-var typed = new Typed('.element', {
-    strings: ["Freelancer.", "Front End Developer."],
-    typeSpeed: 60,
-    backSpeed: 60,
-    loop:true
-
-  });
-
-  // togell navbar
-  let toggleMenu = document.getElementById("toggleMenu")
-   LinksList = document.getElementById("LinksList");
-toggleMenu.addEventListener("click", ()=>{
-    toggleMenu.classList.toggle("open"),
+// togell navbar
+let toggleMenu = document.getElementById("toggleMenu")
+LinksList = document.getElementById("LinksList");
+toggleMenu.addEventListener("click", () => {
+  toggleMenu.classList.toggle("open"),
     LinksList.classList.toggle("open")
 }
 )
-
 // nav sticky on scroll  
 window.onscroll = () => {
   let scrollPosition = window.scrollY
   //! nav part
-  let nav = document.querySelector("nav")
+  let nav = document.getElementById("nav")
   if (scrollPosition > 50) {
-      nav.classList.add("navbar-sticky")
+    nav.classList.add("navbar-sticky")
   } else {
-      nav.classList.remove("navbar-sticky")
-  }}
+    nav.classList.remove("navbar-sticky")
+  }
+}
+
+//! slick slider fire function
+$('.slider').slick({
+  dots: true,
+  infinite: true,
+  arrows: false,
+  speed: 300,
+  autoplay: true,
+  autoplaySpeed: 2000,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  responsive: [
+    {
+      breakpoint: 1400,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 992,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        centerMode: true,
+        centerPadding: '60px',
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
+
+});
+
+$(window).ready(() => {
+  $("#loading").fadeOut(2e3), $("body").css("overflow", "auto");
+  filterSelection('all')
+});
+var typed = new Typed('.element', {
+  strings: ["Freelancer.", "Front End Developer."],
+  typeSpeed: 60,
+  backSpeed: 60,
+  loop: true
+
+});
+
+
+
+
 
 
 // for filter elments 
-  filterSelection("all")
+filterSelection("all")
 function filterSelection(c) {
   var x, i;
   x = document.getElementsByClassName("filterDiv");
@@ -47,7 +95,7 @@ function AddClass(element, name) {
   arr1 = element.className.split(" ");
   arr2 = name.split(" ");
   for (i = 0; i < arr2.length; i++) {
-    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+    if (arr1.indexOf(arr2[i]) == -1) { element.className += " " + arr2[i]; }
   }
 }
 
@@ -57,7 +105,7 @@ function RemoveClass(element, name) {
   arr2 = name.split(" ");
   for (i = 0; i < arr2.length; i++) {
     while (arr1.indexOf(arr2[i]) > -1) {
-      arr1.splice(arr1.indexOf(arr2[i]), 1);     
+      arr1.splice(arr1.indexOf(arr2[i]), 1);
     }
   }
   element.className = arr1.join(" ");
@@ -67,55 +115,15 @@ function RemoveClass(element, name) {
 var btnContainer = document.getElementById("myBtnContainer");
 var btns = btnContainer.getElementsByClassName("btn-filter");
 for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function(){
+  btns[i].addEventListener("click", function () {
     var current = document.getElementsByClassName("active");
     current[0].className = current[0].className.replace(" active", "");
     this.className += " active";
   });
 }
 
-//! slick slider fire function
-$('.slider').slick({
-  dots: true,
-  infinite: true,
-  arrows: false,
-  speed: 300,
-  autoplay: true,
-  autoplaySpeed: 2000,
-  slidesToShow: 3,
-  slidesToScroll: 1,
-  responsive: [
-      {
-          breakpoint: 1400,
-          settings: {
-              slidesToShow: 2,
-              slidesToScroll: 2,
-              infinite: true,
-              dots: true
-          }
-      },
-      {
-          breakpoint: 992,
-          settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1,
-              centerMode: true,
-              centerPadding: '60px',
-          }
-      },
-      {
-          breakpoint: 480,
-          settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1,
-          }
-      }
-      // You can unslick at a given breakpoint now by adding:
-      // settings: "unslick"
-      // instead of a settings object
-  ]
 
-});
+
 
 
 
